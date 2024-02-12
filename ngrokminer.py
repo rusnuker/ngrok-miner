@@ -37,17 +37,14 @@ host = f"{config.first_count}.tcp.eu.ngrok.io"
 # find and connect to a server
 def brute_force(host):
     for port in range(10000, 20000):
-        try:
-            con = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            con.settimeout(config.connection_time)
-            con.connect((host, port))
-            con.close()
-        except Exception:
-            continue
-        
         # retrieving information about the minecraft server
         def check_connection(host, port):
             try:
+                con = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                con.settimeout(config.connection_time)
+                con.connect((host, port))
+                con.close()
+                
                 server = JavaServer.lookup(f"{host}:{port}")
                 table = PrettyTable()
                 table.field_names = ("Server:", f"{host}:{port}")
