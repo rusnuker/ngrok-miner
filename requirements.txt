@@ -1,0 +1,4 @@
+mcstatus
+minecraftinfo
+colorama
+prettytable
